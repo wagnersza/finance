@@ -15,12 +15,19 @@ def args():
 
 # def run_itau_bot():
 #     os.system('cd itau_bot; bundle exec rake itau_bot:run')
+def read_json(json_file):
+    with open(json_file) as f:
+        data = json.load(f)
+    return data
 
 def json_to_database(json_file):
-    # idenpotente
-    pass
+    data = read_json(json_file)
+    balance = data['balance']
+    for transaction in balance:
+        print transaction
 
 def main():
+    json_to_database('itau_bot/return.json')
     # if arg.sync:
     #     run_itau_bot()
 
